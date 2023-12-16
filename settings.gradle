@@ -1,0 +1,5 @@
+rootProject.name = 'dependency_injection'
+include 'di-container'
+include 'sample'
+include 'di-annotations'
+

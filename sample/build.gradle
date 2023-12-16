@@ -1,0 +1,18 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'kotlin-kapt'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly project(':di-annotations')
+    kapt project(':di-container')
+    implementation project(':di-container')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
