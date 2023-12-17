@@ -1,6 +1,7 @@
 package example
 
 import annotations.DIElement
+import annotations.DIGraph
 
 class Car @DIElement constructor(
     engine: Engine,
@@ -9,6 +10,11 @@ class Car @DIElement constructor(
     val type = "Type 1"
 }
 
-class Engine()
+class Engine @DIElement constructor()
 
-class Wheel()
+class Wheel @DIElement constructor()
+
+@DIGraph
+interface CarGraph{
+    fun getcar():Car
+}
