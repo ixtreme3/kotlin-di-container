@@ -6,8 +6,11 @@ import javax.lang.model.element.Element
 
 @OptIn(DelicateKotlinPoetApi::class)
 object DependencyProviderGenerator {
+
+    private val dependencyProviderClassName = ClassName("di", "DependencyProvider")
+
+    @OptIn(DelicateKotlinPoetApi::class)
     fun generateDependencyProviderClass(dependency: Dependency): TypeSpec {
-        val dependencyProviderClassName = ClassName("di", "DependencyProvider")
         println("dep type = ${dependency.selfElement.enclosingElement.simpleName}")
         return TypeSpec.classBuilder("${dependency.name}_DependencyProvider")
             .addSuperinterface(dependencyProviderClassName.parameterizedBy(dependency.type.asTypeName()))
@@ -43,7 +46,7 @@ object DependencyProviderGenerator {
             .build()
     }
 
-    fun createArgsString(dependencies: List<Element>): String {
+    private fun createArgsString(dependencies: List<Element>): String {
         return dependencies.joinToString(separator = ", ") { it.simpleName }
     }
 }

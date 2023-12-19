@@ -1,5 +1,6 @@
 package di
 
+import java.util.UUID
 import javax.lang.model.element.Element
 import javax.lang.model.type.TypeMirror
 
@@ -12,4 +13,9 @@ data class Dependency (
 
     val name: String
         get() = selfElement.enclosingElement.simpleName.toString()
+
+    val providerClassName: String
+        get() = "${name}_DependencyProvider"
+
+    val providerLocalName: String = "${name.lowercase()}DependencyProvider"
 }
