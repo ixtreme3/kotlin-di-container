@@ -4,17 +4,24 @@ import annotations.DIElement
 import annotations.DIGraph
 
 class Car @DIElement constructor(
-    engine: Engine,
-    wheel: Wheel,
+    val engine: Engine,
+    val wheel: Wheel,
 ) {
-    val type = "Type 1"
+    var type = "Type 1"
 }
 
 class Engine @DIElement constructor()
 
 class Wheel @DIElement constructor()
 
+class Garage @DIElement constructor(
+    val car: Car
+)
+
+
 @DIGraph
-interface CarGraph{
-    fun getcar():Car
+interface CarGraph {
+    fun getCar(): Car
+    fun getGarage(): Garage
+    fun getEngine(): Engine
 }

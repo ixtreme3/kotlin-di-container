@@ -1,6 +1,5 @@
 package di
 
-import com.squareup.kotlinpoet.asTypeName
 import javax.lang.model.element.Element
 import javax.lang.model.type.TypeMirror
 
@@ -20,5 +19,4 @@ data class Graph(
 data class Function(
     val selfElement: Element,
     val outputElement: TypeMirror,
-) {
-}
+)
