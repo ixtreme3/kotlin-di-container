@@ -54,7 +54,6 @@ class DependencyContainerAnnotationsProcessor : AbstractProcessor() {
         val functions = mutableListOf<Function>()
         for (i in elements.indices){
             functions.add(Function(elements[i],(elements[i] as ExecutableElement).returnType))
-            //functions.add(Function(elements[i],elements[i].enclosingElement))
         }
         val result = Graph(typeElement, functions, dependencies)
         println("graph info:$result")
@@ -71,6 +70,7 @@ class DependencyContainerAnnotationsProcessor : AbstractProcessor() {
             writeCodeFile(PROVIDERS_PACKAGE_NAME, generatedClass)
         }
     }
+
     private fun generateGraphs(graphs: List<Graph>) {
         if (graphs.isEmpty()) {
             return
